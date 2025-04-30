@@ -3,11 +3,12 @@ package com.edge.linden.registry;
 import com.edge.linden.alter.procedures.ModRarities;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-import com.edge.linden.registry.ModBlocks;
+
 
 public class ModItems {
 
@@ -21,6 +22,5 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.EG_2.get(), new Item.Properties().rarity(ModRarities.COSMIC)));
     public static final RegistryObject<Item> ORE_GENERATOR_ITEM = REGISTRY.register(
             "ore_generator_block",
-            () -> new BlockItem(ModBlocks.ORE_GENERATOR_BLOCK.get(), new Item.Properties())
-    );
+            () -> new BlockItem(ModBlocks.ORE_GENERATOR_BLOCK.get(), new Item.Properties().rarity(ModRarities.EPIC)));
 }
