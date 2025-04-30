@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "linden:block/0qgen",
+    "up": "linden:block/0qgen",
+    "north": "linden:block/0qgen",
+    "east": "linden:block/0qgen",
+    "south": "linden:block/0qgen",
+    "west": "linden:block/0qgen",
+    "particle": "linden:block/0qgen"
+  },
+  "render_type": "solid"
+}
