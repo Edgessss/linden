@@ -19,4 +19,8 @@ public class ModItems {
 
     public static final RegistryObject<Item> EG_2 = REGISTRY.register("eg_2",
             () -> new BlockItem(ModBlocks.EG_2.get(), new Item.Properties().rarity(ModRarities.COSMIC)));
+    public static final RegistryObject<Item> ORE_GENERATOR_ITEM = REGISTRY.register(
+            "ore_generator_block",
+            () -> new BlockItem(ModBlocks.ORE_GENERATOR_BLOCK.get(), new Item.Properties())
+    );
 }

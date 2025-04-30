@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "linden:block/quarry",
+    "up": "linden:block/quarry",
+    "north": "linden:block/quarry",
+    "east": "linden:block/quarry",
+    "south": "linden:block/quarry",
+    "west": "linden:block/quarry",
+    "particle": "linden:block/quarry"
+  },
+  "render_type": "solid"
+}

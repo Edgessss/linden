@@ -1,5 +1,6 @@
 package com.edge.linden;
 
+import com.edge.linden.config.OreGeneratorConfig;
 import com.edge.linden.registry.ModBlocks;
 import com.edge.linden.registry.ModItems;
 import com.edge.linden.registry.LindenModeTabs;
@@ -10,7 +11,9 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -36,6 +39,8 @@ public class Linden {
         MinecraftForge.EVENT_BUS.register(this);
 
         modEventBus.addListener(this::addCreative);
+
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, OreGeneratorConfig.SPEC);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -46,6 +51,7 @@ public class Linden {
         if (event.getTabKey() == LindenModeTabs.PANELS.getKey()) {
             event.accept(ModItems.EG_1);
             event.accept(ModItems.EG_2);
+            event.accept(ModItems.ORE_GENERATOR_ITEM);
         }
     }
 

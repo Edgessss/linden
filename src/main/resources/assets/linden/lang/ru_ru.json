@@ -1,7 +1,8 @@
 {
-  "item_group.linden.panels": "Linden QG",
-  "block.linden.eg1.tooltip": "Генерирует §e500000000 FE/T \n§fС каждой из своих сторон.",
+  "item_group.linden.panels": "Генераторы Линден",
+  "block.linden.eg1.tooltip": "Генерирует §e500.000.000 FE/тик",
   "block.linden.eg_1": "Квантовый генератор",
-  "block.linden.eg2.tooltip": "Генерирует §e2000000000 FE/T \n§fС каждой из своих сторон.",
-  "block.linden.eg_2": "Аморфный квантовый генератор"
+  "block.linden.eg2.tooltip": "Генерирует §e2.000.000.000 FE/тик",
+  "block.linden.eg_2": "Аморфный квантовый генератор",
+  "block.linden.ore_generator_block": "Генератор руды"
 }

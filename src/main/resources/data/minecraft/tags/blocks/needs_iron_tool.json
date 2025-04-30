@@ -1,6 +1,7 @@
 {
   "values": [
     "linden:eg_1",
-    "linden:eg_2"
+    "linden:eg_2",
+    "linden:ore_generator_block"
   ]
 }

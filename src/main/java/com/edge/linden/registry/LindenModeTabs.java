@@ -20,6 +20,7 @@ public class LindenModeTabs {
                  .displayItems((parameters, output) -> {
                   output.accept(ModItems.EG_1.get());
                   output.accept(ModItems.EG_2.get());
+                  output.accept(ModItems.ORE_GENERATOR_ITEM.get());
                  }).build()
  );
 }
