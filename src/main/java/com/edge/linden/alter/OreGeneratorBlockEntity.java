@@ -1,6 +1,5 @@
 package com.edge.linden.alter;
 
-import com.edge.linden.config.OreGeneratorConfig;
 import com.edge.linden.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -21,21 +20,21 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class OreGeneratorBlockEntity extends BlockEntity implements WorldlyContainer {
 
     private final ItemStackHandler itemHandler = new ItemStackHandler(1);
-    private final ModEnergyStorage energyStorage = new ModEnergyStorage(
-            OreGeneratorConfig.ENERGY_CAPACITY.get(),
-            OreGeneratorConfig.ENERGY_PER_TICK.get()
-    );
-
+    private final ModEnergyStorage energyStorage = new ModEnergyStorage(100_000_000, 1_000_000);
     private LazyOptional<IItemHandler> itemHandlerOptional = LazyOptional.of(() -> itemHandler);
     private LazyOptional<ModEnergyStorage> energyStorageOptional = LazyOptional.of(() -> energyStorage);
 
     private final List<ItemStack> ores = new ArrayList<>();
     private int tickCounter = 0;
+
+
+    private final int ticksPerOre = 5;
+    private final int oresPerTick = 32;
+    private final int energyPerOre = 50_000;
 
     public OreGeneratorBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.ORE_GENERATOR_BLOCK_ENTITY.get(), pos, state);
@@ -44,25 +43,16 @@ public class OreGeneratorBlockEntity extends BlockEntity implements WorldlyConta
 
     public void reloadOres() {
         ores.clear();
-        ForgeRegistries.ITEMS.tags().getTag(net.minecraft.tags.ItemTags.create(new ResourceLocation("forge", "ores")))
+        ForgeRegistries.ITEMS.tags()
+                .getTag(net.minecraft.tags.ItemTags.create(new ResourceLocation("forge", "ores")))
                 .forEach(item -> ores.add(new ItemStack(item)));
-
-        OreGeneratorConfig.CUSTOM_ORES.get().forEach(registryName -> {
-            Optional.ofNullable(ForgeRegistries.ITEMS.getValue(new ResourceLocation(registryName)))
-                    .ifPresent(item -> ores.add(new ItemStack(item)));
-        });
     }
 
     public void tickServer() {
         if (level == null || level.isClientSide) return;
 
         tickCounter++;
-
         if (ores.isEmpty()) return;
-
-        int ticksPerOre = OreGeneratorConfig.TICKS_PER_ORE.get();
-        int oresPerTick = OreGeneratorConfig.ORES_PER_TICK.get();
-        int energyPerOre = OreGeneratorConfig.ENERGY_PER_TICK.get();
 
         if (tickCounter >= ticksPerOre) {
             tickCounter = 0;
@@ -97,7 +87,6 @@ public class OreGeneratorBlockEntity extends BlockEntity implements WorldlyConta
             if (!cap.isPresent()) continue;
 
             IItemHandler neighborInv = cap.orElse(null);
-
             for (int slot = 0; slot < neighborInv.getSlots(); slot++) {
                 ItemStack remaining = neighborInv.insertItem(slot, toExport, false);
 
@@ -105,13 +94,11 @@ public class OreGeneratorBlockEntity extends BlockEntity implements WorldlyConta
                     int inserted = toExport.getCount() - remaining.getCount();
                     itemHandler.extractItem(0, inserted, false);
                     toExport = remaining.copy();
-
                     if (toExport.isEmpty()) break;
                 }
             }
         }
     }
-
 
     @Override
     public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
@@ -163,7 +150,7 @@ public class OreGeneratorBlockEntity extends BlockEntity implements WorldlyConta
         energyStorage.setEnergy(energy);
     }
 
-    // --- WorldlyContainer (воронки и т.п.) ---
+    // --- WorldlyContainer ---
     @Override public int[] getSlotsForFace(Direction side) { return new int[]{0}; }
     @Override public boolean canPlaceItemThroughFace(int index, ItemStack stack, Direction direction) { return false; }
     @Override public boolean canTakeItemThroughFace(int index, ItemStack stack, Direction direction) { return true; }
