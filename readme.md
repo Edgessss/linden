@@ -25,4 +25,3 @@
 The mod is licensed under the **MIT License**. You are free to use, modify, and distribute the code as long as you comply with the terms of the license.
 
 ---
-
