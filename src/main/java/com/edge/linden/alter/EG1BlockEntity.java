@@ -36,7 +36,7 @@ public class EG1BlockEntity extends RandomizableContainerBlockEntity implements 
 
     @Override
     protected Component getDefaultName() {
-        return Component.translatable("container.eg_1"); // Локализованное имя контейнера
+        return Component.translatable("container.eg_1");
     }
 
     @Override
