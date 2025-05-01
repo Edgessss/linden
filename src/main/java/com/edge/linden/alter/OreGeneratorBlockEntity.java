@@ -83,9 +83,14 @@ public class OreGeneratorBlockEntity extends BlockEntity implements WorldlyConta
     }
 
     private void tryExportItem() {
-        if (level == null || itemHandler.getStackInSlot(0).isEmpty()) return;
+        if (level == null) return;
+
+        ItemStack toExport = itemHandler.extractItem(0, 64, true);
+        if (toExport.isEmpty()) return;
 
         for (Direction direction : Direction.values()) {
+            if (toExport.isEmpty()) break;
+
             BlockPos neighborPos = worldPosition.relative(direction);
             BlockEntity neighbor = level.getBlockEntity(neighborPos);
             if (neighbor == null) continue;
@@ -94,17 +99,21 @@ public class OreGeneratorBlockEntity extends BlockEntity implements WorldlyConta
             if (!cap.isPresent()) continue;
 
             IItemHandler neighborInv = cap.orElse(null);
-            ItemStack toExport = itemHandler.extractItem(0, 64, true);
 
             for (int slot = 0; slot < neighborInv.getSlots(); slot++) {
-                ItemStack leftover = neighborInv.insertItem(slot, toExport, false);
-                if (leftover.getCount() < toExport.getCount()) {
-                    itemHandler.extractItem(0, toExport.getCount() - leftover.getCount(), false);
-                    return;
+                ItemStack remaining = neighborInv.insertItem(slot, toExport, false);
+
+                if (remaining.getCount() < toExport.getCount()) {
+                    int inserted = toExport.getCount() - remaining.getCount();
+                    itemHandler.extractItem(0, inserted, false);
+                    toExport = remaining.copy();
+
+                    if (toExport.isEmpty()) break; // Всё распределили
                 }
             }
         }
     }
+
 
     @Override
     public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
