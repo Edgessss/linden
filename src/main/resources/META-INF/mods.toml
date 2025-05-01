@@ -53,5 +53,13 @@ mandatory = true
 versionRange = "[@MINECRAFT@,)"
 ordering = "NONE"
 side = "BOTH"
+[[dependencies.linden]]
+modId = "botania"
+mandatory = true
+# See above for how to read this notation, this essentially means any
+# version of Minecraft from @MINECRAFT@ (inclusive).
+versionRange = "[1.20.1-448-FORGE,)"
+ordering = "NONE"
+side = "BOTH"
 
 

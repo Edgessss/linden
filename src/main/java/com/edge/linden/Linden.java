@@ -1,6 +1,9 @@
 package com.edge.linden;
 
 
+import com.edge.linden.botania.registry.LindenBlockEntities;
+import com.edge.linden.botania.registry.LindenBlocks;
+import com.edge.linden.botania.registry.LindenItems;
 import com.edge.linden.registry.ModBlocks;
 import com.edge.linden.registry.ModItems;
 import com.edge.linden.registry.LindenModeTabs;
@@ -30,6 +33,12 @@ public class Linden {
 
         ModItems.REGISTRY.register(modEventBus);
 
+        LindenBlocks.BLOCKS.register(modEventBus);
+
+        LindenItems.ITEMS.register(modEventBus);
+
+        LindenBlockEntities.BLOCK_ENTITIES.register(modEventBus);
+
         LindenModeTabs.REGISTRY.register(modEventBus);
 
         ModBlockEntities.REGISTRY.register(modEventBus);
@@ -52,6 +61,7 @@ public class Linden {
             event.accept(ModItems.EG_1);
             event.accept(ModItems.EG_2);
             event.accept(ModItems.ORE_GENERATOR_ITEM);
+            event.accept(LindenItems.ASGARDANDELION_TIER1_ITEM);
         }
     }
 

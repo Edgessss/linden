@@ -4,5 +4,6 @@
   "block.linden.eg_1": "Quantum Generator",
   "block.linden.eg2.tooltip": "Generates §e2.000.000.000 FE/tick",
   "block.linden.eg_2": "Amorphous Quantum Generator",
-  "block.linden.ore_generator_block": "Ore Generator"
+  "block.linden.ore_generator_block": "Ore Generator",
+  "block.linden.asgardandelion_tier1": "Asgardandelion"
 }

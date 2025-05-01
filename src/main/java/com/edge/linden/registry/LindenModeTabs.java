@@ -1,5 +1,6 @@
 package com.edge.linden.registry;
 
+import com.edge.linden.botania.registry.LindenItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -21,6 +22,7 @@ public class LindenModeTabs {
                   output.accept(ModItems.EG_1.get());
                   output.accept(ModItems.EG_2.get());
                   output.accept(ModItems.ORE_GENERATOR_ITEM.get());
+                  output.accept(LindenItems.ASGARDANDELION_TIER1_ITEM.get());
                  }).build()
  );
 }
