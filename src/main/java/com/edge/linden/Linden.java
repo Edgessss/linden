@@ -8,15 +8,11 @@ import com.edge.linden.registry.ModBlocks;
 import com.edge.linden.registry.ModItems;
 import com.edge.linden.registry.LindenModeTabs;
 import com.edge.linden.registry.ModBlockEntities;
-
-
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-
 import net.minecraftforge.fml.common.Mod;
-
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -27,6 +23,7 @@ public class Linden {
     public static final String MOD_ID = "linden";
 
     public Linden() {
+
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModBlocks.REGISTRY.register(modEventBus);
@@ -49,11 +46,9 @@ public class Linden {
 
         modEventBus.addListener(this::addCreative);
 
-
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
