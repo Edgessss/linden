@@ -7,6 +7,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Item.Properties;
 
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -18,8 +19,6 @@ public class LindenItems {
 
     public static final RegistryObject<Item> ASGARDANDELION_TIER1_ITEM =
             ITEMS.register("asgardandelion_tier1", () -> new BlockItem(LindenBlocks.ASGARDANDELION_TIER1.get(), new Properties()));
-
-
     public static void register(IEventBus bus) {
         ITEMS.register(bus);
     }
