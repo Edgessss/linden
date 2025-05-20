@@ -1,0 +1,13 @@
+{
+  "minecraft:damage_type": {
+    "linden:demonic": {
+      "element": {
+        "name": "demonic",
+        "scaling": "never",
+        "effects": "minecraft:hurt",
+        "exhaustion": 0.1
+      },
+      "override": false
+    }
+  }
+}

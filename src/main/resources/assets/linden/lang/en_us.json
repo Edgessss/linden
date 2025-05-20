@@ -5,5 +5,10 @@
   "block.linden.eg2.tooltip": "Generates §e2.000.000.000 FE/tick",
   "block.linden.eg_2": "Amorphous Quantum Generator",
   "block.linden.ore_generator_block": "Ore Generator",
-  "block.linden.asgardandelion_tier1": "Asgardandelion"
+  "block.linden.asgardandelion_tier1": "Asgardandelion",
+  "item.linden.upgrade_item": "SpeedUpgrade Generator",
+  "message.linden.upgrade_applied": "Upgrade level: %1$s | Generation speed: 1 ore / %2$s ticks",
+  "enchantment.looting": "",
+  "enchantment.level.20": "20",
+  "item.linden.demonic_sword": "Infinity Demonic Sword"
 }

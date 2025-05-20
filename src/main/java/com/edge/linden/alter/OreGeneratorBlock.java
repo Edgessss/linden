@@ -33,6 +33,16 @@ public class OreGeneratorBlock extends BaseEntityBlock {
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new OreGeneratorBlockEntity(pos, state);
     }
+    @Override
+    public void onRemove(BlockState oldState, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
+        if (!oldState.is(newState.getBlock())) {
+            BlockEntity blockEntity = level.getBlockEntity(pos);
+            if (blockEntity instanceof OreGeneratorBlockEntity generator) {
+                generator.dropItems();
+            }
+        }
+        super.onRemove(oldState, level, pos, newState, isMoving);
+    }
 
     @Nullable
     @Override

@@ -11,19 +11,21 @@ import com.edge.linden.registry.ModItems;
 
 public class LindenModeTabs {
 
- public static final DeferredRegister<CreativeModeTab> REGISTRY = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, "linden");
+    public static final DeferredRegister<CreativeModeTab> REGISTRY = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, "linden");
 
-
- public static final RegistryObject<CreativeModeTab> PANELS = REGISTRY.register("panels", () ->
-         CreativeModeTab.builder()
-                 .title(Component.translatable("item_group.linden.panels"))
-                 .icon(() -> new ItemStack(ModItems.EG_1.get()))
-                 .displayItems((parameters, output) -> {
-                  output.accept(ModItems.EG_1.get());
-                  output.accept(ModItems.EG_2.get());
-                  output.accept(ModItems.ORE_GENERATOR_ITEM.get());
-                  output.accept(LindenItems.ASGARDANDELION_TIER1_ITEM.get());
-                 }).build()
- );
+    public static final RegistryObject<CreativeModeTab> PANELS = REGISTRY.register("panels", () ->
+            CreativeModeTab.builder()
+                    .title(Component.translatable("item_group.linden.panels"))
+                    .icon(() -> new ItemStack(ModItems.EG_1.item.get()))
+                    .displayItems((parameters, output) -> {
+                        for (var itemReg : ModItems.getItemsForCreativeTab()) {
+                            output.accept(itemReg.get());
+                            for (var item : LindenItems.getItemsForCreativeTab()) {
+                                output.accept(item.get());
+                            }
+                        }
+                    })
+                    .build()
+    );
 }
 

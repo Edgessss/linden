@@ -5,5 +5,10 @@
   "block.linden.eg2.tooltip": "Генерирует §e2.000.000.000 FE/тик",
   "block.linden.eg_2": "Аморфный квантовый генератор",
   "block.linden.ore_generator_block": "Генератор руды",
-  "block.linden.asgardandelion_tier1": "Асгардуванчик"
+  "block.linden.asgardandelion_tier1": "Асгардуванчик",
+  "item.linden.upgrade_item": "Ускоритель Генератора",
+  "message.linden.upgrade_applied": "Уровень улучшения: %1$s | Скорость генерации: 1 руда / %2$s тиков",
+  "enchantment.looting": "",
+  "enchantment.level.20": "20",
+  "item.linden.demonic_sword": "Демонический Меч Бесконечности"
 }
